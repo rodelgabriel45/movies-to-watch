@@ -25,15 +25,19 @@ function onAddItemSubmit(e) {
         itemToEdit.classList.remove("edit-mode");
         itemToEdit.remove();
         isEditMode = false;
+        console.log("This part in isEditmode Ran");
+
     }else {
         if (checkItemDuplicate(newItemText)) {
             alert("That item already exist!");
+            console.log("This part in checkDuplicate Ran");
             return;
         }   
     }
 
     
     addItemToDOM(newItemText);
+    console.log("This part in additemtoDOM Ran");
 
     addItemToStorage(newItemText);
     
