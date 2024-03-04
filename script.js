@@ -28,10 +28,11 @@ function onAddItemSubmit(e) {
     }else {
         if (checkItemDuplicate(newItemText)) {
             alert("That item already exist!");
-        }
-        return;
+            return;
+        }   
     }
 
+    
     addItemToDOM(newItemText);
 
     addItemToStorage(newItemText);
@@ -180,9 +181,6 @@ function checkUI() {
         filter.style.display = "block";
         btnClear.style.display = "block";
     }
-
-    formBtn.innerHTML = "<i class='fa-solid fa-plus'></i> Add Item"
-    formBtn.style.backgroundColor = "#333"
 
     isEditMode = false;
 }
