@@ -181,7 +181,7 @@ function checkUI() {
         btnClear.style.display = "block";
     }
 
-    formBtn.innerHTML = "<i class'fa-solid fa-plus'></i> Add Item";
+    formBtn.innerHTML = "<i class='fa-solid fa-plus'></i> Add Item"
     formBtn.style.backgroundColor = "#333"
 
     isEditMode = false;
