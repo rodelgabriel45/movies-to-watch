@@ -64,6 +64,15 @@ function addItemToDOM(item) {
 }
 
 function addItemToStorage(item) {
+    let itemsFromStorage = getItemsFromStorage();
+
+    itemsFromStorage.push(item);
+
+    // Convert back to JSON and send to localStorage
+    localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+
+function getItemsFromStorage() {
     let itemsFromStorage;
 
     if (localStorage.getItem("items") === null) {
@@ -72,20 +81,11 @@ function addItemToStorage(item) {
         itemsFromStorage = JSON.parse(localStorage.getItem("items"));
     }
 
-    itemsFromStorage.push(item);
-
-    // Convert back to JSON and send to localStorage
-    localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+    return itemsFromStorage;
 }
 
 function fetchItemfromStorage(){
-    let itemsFromStorage;
-
-    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
-
-    if (itemsFromStorage !== null) {
-        itemsFromStorage.forEach(item => addItemToDOM(item));
-    }
+    let itemsFromStorage = getItemsFromStorage();
 
     checkUI();
 }
@@ -100,9 +100,7 @@ function onClickItem(e) {
 }
 
 function checkItemDuplicate(item) {
-    let itemsFromStorage;
-
-    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+    let itemsFromStorage = getItemsFromStorage();
 
     return itemsFromStorage.includes(item);
 }
@@ -131,9 +129,7 @@ function removeItem(item) {
 }
 
 function removeItemfromlocalStorage(item) {
-    let itemsFromStorage;
-
-    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+    let itemsFromStorage = getItemsFromStorage();
 
     itemsFromStorage = itemsFromStorage.filter(i => i !== item);
 
@@ -142,13 +138,11 @@ function removeItemfromlocalStorage(item) {
 
 
 function clearItems() {
-    let itemsFromStorage;
+    let itemsFromStorage = getItemsFromStorage();
 
     while (listItems.firstChild) {
         listItems.firstChild.remove();
     }
-
-    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
 
     itemsFromStorage = [];
 
