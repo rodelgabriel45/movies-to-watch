@@ -83,6 +83,10 @@ function getItemsFromStorage() {
 function fetchItemfromStorage(){
     let itemsFromStorage = getItemsFromStorage();
 
+    if (itemsFromStorage !== null) {
+        itemsFromStorage.forEach(item => addItemToDOM(item));
+    }
+
     checkUI();
 }
 
