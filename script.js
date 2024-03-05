@@ -25,19 +25,15 @@ function onAddItemSubmit(e) {
         itemToEdit.classList.remove("edit-mode");
         itemToEdit.remove();
         isEditMode = false;
-        console.log("This part in isEditmode Ran");
 
     }else {
         if (checkItemDuplicate(newItemText)) {
             alert("That item already exist!");
-            console.log("This part in checkDuplicate Ran");
             return;
         }   
     }
-
-    
+  
     addItemToDOM(newItemText);
-    console.log("This part in additemtoDOM Ran");
 
     addItemToStorage(newItemText);
     
@@ -179,6 +175,9 @@ function checkUI() {
         filter.style.display = "block";
         btnClear.style.display = "block";
     }
+
+    formBtn.innerHTML = "<i class='fa-solid fa-plus'></i> Add Item";
+    formBtn.style.backgroundColor = "#333";
 
     isEditMode = false;
 }
